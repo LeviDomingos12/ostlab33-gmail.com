@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-15T18:00:00.013Z",
+  "type": "cron_automated",
+  "tables": {
+    "products": null,
+    "customers": [],
+    "transactions": null,
+    "cashflow": null,
+    "employees": null,
+    "auditlogs": null,
+    "settings": {
+      "smtpHost": "smtp.gmail.com",
+      "smtpPort": 465,
+      "smtpUser": "comercial@gmail.com",
+      "smtpPassword": "initial_secure_password_999",
+      "smtpSecure": true,
+      "smtpEnabled": true,
+      "smtpSenderName": "OST Vendas - Faturação Oficial",
+      "smtpFromEmail": "faturacao@empresa.co.mz",
+      "smtpSource": "database",
+      "updated_at": "2026-10-15T17:59:26.936Z"
+    }
+  }
+}

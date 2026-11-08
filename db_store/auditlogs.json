@@ -1,0 +1,11 @@
+[
+  {
+    "id": "log-1792087200170-0.023130517322821564",
+    "userId": null,
+    "userName": "Sistema (Scheduler)",
+    "action": "Backup Agendado Automático (Cron)",
+    "module": "SISTEMA",
+    "details": "Backup completo de fim de dia gerado (backup_cron_automated_2026-10-15T18-00-00-013Z.json, 0.63 KB). Sincronizado para Google Cloud (GCS). Envio de e-mail para comercial@gmail.com: Simulação de envio de e-mail de backup para comercial@gmail.com efetuada com sucesso (SMTP não configurado).",
+    "timestamp": "2026-10-15T18:00:00.170Z"
+  }
+]

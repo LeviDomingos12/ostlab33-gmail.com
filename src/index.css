@@ -1,0 +1,597 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base resets & typography */
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+  scrollbar-color: #cbd5e1 #f8fafc;
+  scrollbar-width: thin;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.dark {
+  background-color: #09090b !important;
+  color: #f4f4f5 !important;
+  scrollbar-color: #3f3f46 #09090b;
+}
+
+h1, h2, h3, h4, th {
+  font-family: var(--font-sans);
+  letter-spacing: -0.015em;
+}
+
+/* Clean, unobtrusive scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: background-color 0.15s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Custom Scrollbar utility */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.dark .custom-scrollbar {
+  scrollbar-color: #3f3f46 transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .responsive-padding {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  .responsive-modal {
+    max-height: 92vh !important;
+    margin: 0.5rem !important;
+    width: calc(100% - 1rem) !important;
+  }
+}
+
+.overflow-y-auto, .overflow-x-auto, .overflow-auto, aside, main {
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Professional Dark Mode Overrides */
+.dark .bg-slate-50, .dark [class*="bg-slate-50"] {
+  background-color: #09090b !important;
+}
+
+.dark .bg-white, .dark [class*="bg-white"] {
+  background-color: #18181b !important;
+}
+
+.dark .border-slate-200, .dark .border-slate-100, .dark [class*="border-slate-200"] {
+  border-color: #27272a !important;
+}
+
+.dark aside {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+}
+
+.dark header {
+  background-color: rgba(9, 9, 11, 0.9) !important;
+  border-color: #27272a !important;
+}
+
+.dark input, .dark select, .dark textarea {
+  background-color: #09090b !important;
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+.dark input::placeholder, .dark textarea::placeholder {
+  color: #71717a !important;
+}
+.dark input:focus, .dark select:focus, .dark textarea:focus {
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25) !important;
+}
+
+.dark th {
+  background-color: #09090b !important;
+  color: #ffffff !important;
+  border-color: #27272a !important;
+}
+
+.dark td {
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+
+.dark tr:hover td {
+  background-color: rgba(39, 39, 42, 0.5) !important;
+}
+
+/* ==========================================================
+   REGRA FUNDAMENTAL DE CONTRASTE E SIMPLICIDADE VISUAL:
+   - Fundo Branco / Claro -> Letras ESTRITAMENTE PRETAS (#000000)
+   - Fundo Preto / Escuro  -> Letras ESTRITAMENTE BRANCAS (#ffffff)
+   Evita multiplicidade de cores, cinzentos e vermelhos de baixo contraste.
+   ========================================================== */
+
+/* 1. ONDE O FUNDO É BRANCO OU CLARO: TODAS AS LETRAS PRETAS (#000000) */
+body:not(.dark),
+.bg-white,
+[class*="bg-white"],
+.bg-slate-50,
+[class*="bg-slate-50"],
+.bg-slate-100,
+[class*="bg-slate-100"] {
+  color: #000000;
+}
+
+body:not(.dark) h1, body:not(.dark) h2, body:not(.dark) h3, body:not(.dark) h4, body:not(.dark) h5, body:not(.dark) h6,
+body:not(.dark) p, body:not(.dark) label, body:not(.dark) th, body:not(.dark) td, body:not(.dark) li,
+.bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4, .bg-white h5, .bg-white h6,
+.bg-white p, .bg-white label, .bg-white th, .bg-white td, .bg-white li,
+[class*="bg-white"] h1, [class*="bg-white"] h2, [class*="bg-white"] h3, [class*="bg-white"] h4,
+[class*="bg-white"] p, [class*="bg-white"] label, [class*="bg-white"] td {
+  color: #000000 !important;
+}
+
+body:not(.dark) .text-slate-900,
+body:not(.dark) .text-slate-850,
+body:not(.dark) .text-slate-800,
+body:not(.dark) .text-slate-700,
+body:not(.dark) .text-slate-650,
+body:not(.dark) .text-slate-600,
+body:not(.dark) .text-slate-500,
+body:not(.dark) .text-slate-400,
+body:not(.dark) .text-zinc-900,
+body:not(.dark) .text-zinc-800,
+body:not(.dark) .text-zinc-700,
+body:not(.dark) .text-zinc-600,
+body:not(.dark) .text-zinc-500,
+body:not(.dark) .text-zinc-400,
+body:not(.dark) .text-gray-900,
+body:not(.dark) .text-gray-800,
+body:not(.dark) .text-gray-700,
+body:not(.dark) .text-gray-600,
+body:not(.dark) .text-gray-500,
+body:not(.dark) .text-gray-400 {
+  color: #000000 !important;
+}
+
+/* 2. ONDE O FUNDO É PRETO OU ESCURO (OU MODO ESCURO): TODAS AS LETRAS BRANCAS (#ffffff) */
+body.dark,
+.dark,
+.bg-black,
+[class*="bg-black"],
+.bg-zinc-950,
+[class*="bg-zinc-950"],
+.bg-zinc-900,
+[class*="bg-zinc-900"],
+.bg-slate-950,
+[class*="bg-slate-950"],
+.bg-slate-900,
+[class*="bg-slate-900"],
+.bg-neutral-950,
+[class*="bg-neutral-950"],
+.bg-neutral-900,
+[class*="bg-neutral-900"],
+[data-dark="true"] {
+  color: #ffffff;
+}
+
+body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6,
+body.dark p, body.dark label, body.dark th, body.dark td, body.dark li,
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.dark p, .dark label, .dark th, .dark td, .dark li,
+[class*="bg-black"] h1, [class*="bg-black"] h2, [class*="bg-black"] h3, [class*="bg-black"] h4,
+[class*="bg-black"] p, [class*="bg-black"] label, [class*="bg-black"] td,
+[class*="bg-zinc-950"] h1, [class*="bg-zinc-950"] h2, [class*="bg-zinc-950"] h3, [class*="bg-zinc-950"] h4,
+[class*="bg-zinc-950"] p, [class*="bg-zinc-950"] label, [class*="bg-zinc-950"] td,
+[class*="bg-zinc-900"] h1, [class*="bg-zinc-900"] h2, [class*="bg-zinc-900"] h3, [class*="bg-zinc-900"] h4,
+[class*="bg-zinc-900"] p, [class*="bg-zinc-900"] label, [class*="bg-zinc-900"] td,
+[class*="bg-slate-950"] h1, [class*="bg-slate-950"] h2, [class*="bg-slate-950"] h3, [class*="bg-slate-950"] h4,
+[class*="bg-slate-950"] p, [class*="bg-slate-950"] label, [class*="bg-slate-950"] td,
+[class*="bg-slate-900"] h1, [class*="bg-slate-900"] h2, [class*="bg-slate-900"] h3, [class*="bg-slate-900"] h4,
+[class*="bg-slate-900"] p, [class*="bg-slate-900"] label, [class*="bg-slate-900"] td {
+  color: #ffffff !important;
+}
+
+/* Onde o fundo é preto ou escuro, nunca usar cinzento nem vermelho */
+.dark .text-slate-900,
+.dark .text-slate-850,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-650,
+.dark .text-slate-600,
+.dark .text-slate-500,
+.dark .text-slate-400,
+.dark .text-slate-300,
+.dark .text-zinc-300,
+.dark .text-zinc-400,
+.dark .text-zinc-500,
+.dark .text-zinc-600,
+.dark .text-zinc-700,
+.dark .text-zinc-800,
+.dark .text-zinc-900,
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-neutral-300,
+.dark .text-neutral-400,
+.dark .text-neutral-500,
+.dark .text-red-400,
+.dark .text-red-500,
+.dark .text-rose-400,
+.dark .text-rose-500,
+[class*="bg-black"] .text-slate-400,
+[class*="bg-black"] .text-slate-500,
+[class*="bg-black"] .text-zinc-400,
+[class*="bg-black"] .text-zinc-500,
+[class*="bg-black"] .text-gray-400,
+[class*="bg-black"] .text-gray-500,
+[class*="bg-black"] .text-red-400,
+[class*="bg-black"] .text-red-500,
+[class*="bg-zinc-950"] .text-slate-400,
+[class*="bg-zinc-950"] .text-slate-500,
+[class*="bg-zinc-950"] .text-zinc-400,
+[class*="bg-zinc-950"] .text-zinc-500,
+[class*="bg-zinc-950"] .text-gray-400,
+[class*="bg-zinc-950"] .text-gray-500,
+[class*="bg-zinc-950"] .text-red-400,
+[class*="bg-zinc-950"] .text-red-500,
+[class*="bg-zinc-900"] .text-slate-400,
+[class*="bg-zinc-900"] .text-slate-500,
+[class*="bg-zinc-900"] .text-zinc-400,
+[class*="bg-zinc-900"] .text-zinc-500,
+[class*="bg-zinc-900"] .text-gray-400,
+[class*="bg-zinc-900"] .text-gray-500,
+[class*="bg-zinc-900"] .text-red-400,
+[class*="bg-zinc-900"] .text-red-500,
+[class*="bg-slate-950"] .text-slate-400,
+[class*="bg-slate-950"] .text-slate-500,
+[class*="bg-slate-950"] .text-zinc-400,
+[class*="bg-slate-950"] .text-zinc-500,
+[class*="bg-slate-950"] .text-red-400,
+[class*="bg-slate-950"] .text-red-500,
+[class*="bg-slate-900"] .text-slate-400,
+[class*="bg-slate-900"] .text-slate-500,
+[class*="bg-slate-900"] .text-zinc-400,
+[class*="bg-slate-900"] .text-zinc-500,
+[class*="bg-slate-900"] .text-red-400,
+[class*="bg-slate-900"] .text-red-500,
+[data-dark="true"] span,
+[data-dark="true"] p,
+[data-dark="true"] label,
+[data-contrast-enforced="white"] {
+  color: #ffffff !important;
+}
+
+/* ==========================================================
+   ABA DE DEFINIÇÕES (SETTINGS) - TODAS AS LETRAS PRETAS (#000000)
+   ========================================================== */
+#settings-tab-container,
+.settings-tab-container,
+[data-module="settings"],
+[data-tab="SETTINGS"],
+[data-tab="settings"] {
+  color: #000000 !important;
+}
+
+#settings-tab-container h1,
+#settings-tab-container h2,
+#settings-tab-container h3,
+#settings-tab-container h4,
+#settings-tab-container h5,
+#settings-tab-container h6,
+#settings-tab-container p,
+#settings-tab-container label,
+#settings-tab-container li,
+#settings-tab-container th,
+#settings-tab-container td,
+#settings-tab-container b,
+#settings-tab-container strong,
+#settings-tab-container input,
+#settings-tab-container select,
+#settings-tab-container textarea,
+.settings-tab-container h1,
+.settings-tab-container h2,
+.settings-tab-container h3,
+.settings-tab-container h4,
+.settings-tab-container h5,
+.settings-tab-container h6,
+.settings-tab-container p,
+.settings-tab-container label,
+.settings-tab-container li,
+.settings-tab-container th,
+.settings-tab-container td,
+.settings-tab-container b,
+.settings-tab-container strong,
+.settings-tab-container input,
+.settings-tab-container select,
+.settings-tab-container textarea,
+[data-module="settings"] h1,
+[data-module="settings"] h2,
+[data-module="settings"] h3,
+[data-module="settings"] h4,
+[data-module="settings"] h5,
+[data-module="settings"] h6,
+[data-module="settings"] p,
+[data-module="settings"] label,
+[data-module="settings"] li,
+[data-module="settings"] th,
+[data-module="settings"] td,
+[data-module="settings"] b,
+[data-module="settings"] strong,
+[data-module="settings"] input,
+[data-module="settings"] select,
+[data-module="settings"] textarea {
+  color: #000000 !important;
+}
+
+/* Sub-abas e botões neutros na aba de definições com letras pretas */
+#settings-tab-container button,
+.settings-tab-container button,
+[data-module="settings"] button {
+  color: #000000;
+}
+
+/* Manter botões com fundo sólido colorido (como botão Laranja de Salvar) com texto branco contrastante */
+#settings-tab-container button.bg-orange-500,
+#settings-tab-container button.bg-orange-600,
+#settings-tab-container button[class*="bg-orange"],
+#settings-tab-container button.bg-teal-600,
+#settings-tab-container button.bg-blue-600,
+#settings-tab-container button.bg-indigo-600,
+#settings-tab-container button.bg-indigo-700,
+#settings-tab-container button.bg-indigo-850,
+#settings-tab-container button.bg-rose-600,
+#settings-tab-container button.bg-emerald-600,
+#settings-tab-container button.bg-slate-800,
+#settings-tab-container button.bg-slate-900,
+#settings-tab-container button.bg-amber-500,
+#settings-tab-container button.bg-amber-600,
+.settings-tab-container button.bg-orange-500,
+.settings-tab-container button.bg-orange-600,
+[data-module="settings"] button.bg-orange-500,
+[data-module="settings"] button.bg-orange-600 {
+  color: #ffffff !important;
+}
+
+/* Fundo claro para campos de formulário e cartões na aba de definições para garantir legibilidade das letras pretas */
+#settings-tab-container input,
+#settings-tab-container select,
+#settings-tab-container textarea,
+.settings-tab-container input,
+.settings-tab-container select,
+.settings-tab-container textarea,
+[data-module="settings"] input,
+[data-module="settings"] select,
+[data-module="settings"] textarea {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+#settings-tab-container input::placeholder,
+#settings-tab-container textarea::placeholder,
+.settings-tab-container input::placeholder,
+.settings-tab-container textarea::placeholder,
+[data-module="settings"] input::placeholder,
+[data-module="settings"] textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Assegurar que mesmo em modo escuro os textos da aba de definições respeitem a instrução do usuário */
+.dark #settings-tab-container,
+.dark .settings-tab-container,
+.dark [data-module="settings"] {
+  color: #000000 !important;
+}
+
+.dark #settings-tab-container h1,
+.dark #settings-tab-container h2,
+.dark #settings-tab-container h3,
+.dark #settings-tab-container h4,
+.dark #settings-tab-container h5,
+.dark #settings-tab-container h6,
+.dark #settings-tab-container p,
+.dark #settings-tab-container label,
+.dark #settings-tab-container li,
+.dark #settings-tab-container th,
+.dark #settings-tab-container td,
+.dark #settings-tab-container b,
+.dark #settings-tab-container strong,
+.dark #settings-tab-container input,
+.dark #settings-tab-container select,
+.dark #settings-tab-container textarea,
+.dark .settings-tab-container h1,
+.dark .settings-tab-container h2,
+.dark .settings-tab-container h3,
+.dark .settings-tab-container h4,
+.dark .settings-tab-container p,
+.dark .settings-tab-container label,
+.dark .settings-tab-container input,
+.dark .settings-tab-container select,
+.dark .settings-tab-container textarea,
+.dark [data-module="settings"] h1,
+.dark [data-module="settings"] h2,
+.dark [data-module="settings"] h3,
+.dark [data-module="settings"] h4,
+.dark [data-module="settings"] p,
+.dark [data-module="settings"] label,
+.dark [data-module="settings"] input,
+.dark [data-module="settings"] select,
+.dark [data-module="settings"] textarea {
+  color: #000000 !important;
+}
+
+.dark #settings-tab-container .bg-white,
+.dark #settings-tab-container [class*="bg-white"],
+.dark #settings-tab-container .bg-slate-50,
+.dark #settings-tab-container [class*="bg-slate-50"],
+.dark .settings-tab-container .bg-white,
+.dark .settings-tab-container [class*="bg-white"],
+.dark [data-module="settings"] .bg-white,
+.dark [data-module="settings"] [class*="bg-white"] {
+  background-color: #ffffff !important;
+}
+
+/* Botões do padrão do sistema OST (Laranja) com texto branco */
+.bg-orange-500, .bg-orange-600 {
+  color: #ffffff !important;
+}
+
+.dark .bg-orange-500, .dark .bg-orange-600 {
+  background-color: #f97316 !important;
+  color: #ffffff !important;
+}
+.dark .bg-orange-500:hover, .dark .bg-orange-600:hover {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================
+   OPTIMIZED PRINT LAYOUT FOR 80MM THERMAL MINI-PRINTERS
+   ========================================================== */
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 0mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print, nav, header, sidebar, .modal-backdrop {
+    display: none !important;
+  }
+
+  .thermal-receipt-80mm, #pos-completed-receipt {
+    width: 76mm !important;
+    max-width: 80mm !important;
+    margin: 0 auto !important;
+    padding: 3mm 2mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Courier New', Courier, monospace, 'Lucida Console', sans-serif !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: static !important;
+    display: block !important;
+    overflow: visible !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .thermal-receipt-80mm *, #pos-completed-receipt * {
+    color: #000000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    visibility: visible !important;
+  }
+
+  .thermal-receipt-header {
+    text-align: center !important;
+    margin-bottom: 6px !important;
+    padding-bottom: 6px !important;
+    border-bottom: 1px dashed #000000 !important;
+  }
+
+  .thermal-receipt-title {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .thermal-items-header {
+    font-weight: bold !important;
+    border-bottom: 1px dashed #000000 !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .thermal-dashed-divider {
+    border-top: 1px dashed #000000 !important;
+    margin: 6px 0 !important;
+  }
+
+  .thermal-total-row {
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    border-top: 1px dashed #000000 !important;
+    border-bottom: 1px dashed #000000 !important;
+    padding: 4px 0 !important;
+    margin: 4px 0 !important;
+  }
+
+  .thermal-qr-code {
+    width: 30mm !important;
+    height: 30mm !important;
+    margin: 4px auto !important;
+    display: block !important;
+    image-rendering: pixelated !important;
+  }
+
+  .thermal-footer {
+    text-align: center !important;
+    font-size: 9.5px !important;
+    margin-top: 6px !important;
+    padding-top: 4px !important;
+    border-top: 1px dashed #000000 !important;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "smtpHost": "mail.meudominio.co.mz",
+  "smtpPort": 465,
+  "smtpUser": "noreply@meudominio.co.mz",
+  "smtpPassword": "initial_secure_password_999",
+  "smtpSecure": true,
+  "smtpEnabled": true,
+  "smtpSenderName": "OST Vendas - Faturação Oficial",
+  "smtpFromEmail": "faturacao@empresa.co.mz",
+  "smtpSource": "database",
+  "updated_at": "2026-11-08T12:41:44.014Z",
+  "emailProvider": "smtp",
+  "resendApiKey": "",
+  "resendFromEmail": "onboarding@resend.dev",
+  "alertsRecipientEmail": "",
+  "emailAlertsStockEnabled": true,
+  "emailAlertsCashShiftEnabled": true,
+  "emailAlertsSecurityEnabled": true,
+  "emailAlertsLargeSalesEnabled": false
+}

@@ -1,0 +1,6 @@
+{
+  "name": "OST Vendas",
+  "description": "Sistema Web de Gestão Comercial Completo",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
